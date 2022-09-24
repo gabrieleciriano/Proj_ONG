@@ -6,7 +6,6 @@ namespace Proj_ONG
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
