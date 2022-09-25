@@ -9,7 +9,7 @@ namespace Proj_ONG
 {
     internal class Banco
     {
-        string Conexao = "Data Source=localhost; Initial Catalog=OngAdocao; User Id=sa; Password=MT1860143g;";
+        string Conexao = "Data Source=localhost; Initial Catalog=ControleAdocao; User Id=sa; Password=MT1860143g;";
 
 
         public Banco()
@@ -21,6 +21,7 @@ namespace Proj_ONG
         {
             return Conexao;
         }
+
 
         
         
