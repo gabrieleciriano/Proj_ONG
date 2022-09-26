@@ -11,21 +11,10 @@ namespace Proj_ONG
         public string Nome { get; set; }
         public char Situacao { get; set; }
 
-
         public Animal()
         {
 
         }
-        public Animal(int chip, string familia, string raca, char sexo, string nome, char situacao)
-        {
-            this.CHIP = chip;
-            this.Familia = familia;
-            this.Raca = raca;
-            this.Sexo = sexo;
-            this.Nome = nome;
-            this.Situacao = situacao;
-        }
-
         public void CadastrarAnimal()
         {
             Console.WriteLine("Numero do CHIP de identificação do animal: ");

@@ -28,25 +28,6 @@ namespace Proj_ONG
         {
 
         }
-        //Metodo Construtor com parametros
-        //public Adotante(string nome, string cpf, char sexo, string dataNasc, string logradouro, string numero, int cep, string bairro, string complemento, string cidade, string uf, string telefone, char status)
-        //{
-        //    this.Nome = nome;
-        //    this.CPF = cpf;
-        //    this.Sexo = sexo;
-        //    this.DataNascimento = dataNasc;
-        //    this.Logradouro = logradouro;
-        //    this.Numero = numero;
-        //    this.CEP = cep;
-        //    this.Bairro = bairro;
-        //    this.Complemento = complemento;
-        //    this.Cidade = cidade;
-        //    this.UF = uf;
-        //    this.Telefone = telefone;
-        //    this.Status = status;
-
-
-        //}
         public void CadastrarAdotante()
         {
 
