@@ -21,9 +21,7 @@ namespace Proj_ONG
         public string Cidade { get; set; }
         public string UF { get; set; }
         public string Telefone { get; set; }
-        public char SituacaoAdotante { get; set; } //A- ATIVO I - INATIVO NO CADASTRO
 
-        //Metodo Construtor vazio
         public Adotante()
         {
 
@@ -164,9 +162,7 @@ namespace Proj_ONG
 
                 }
             } while (Telefone.Length > 11);
-
-            SituacaoAdotante = 'A';
-
+        
         }
     }
 

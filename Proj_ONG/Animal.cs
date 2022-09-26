@@ -9,7 +9,7 @@ namespace Proj_ONG
         public string Raca { get; set; }
         public char Sexo { get; set; }
         public string Nome { get; set; }
-        public char Situacao { get; set; }
+        
 
         public Animal()
         {
@@ -67,9 +67,8 @@ namespace Proj_ONG
 
             }
             else
-                Nome = "--";
-            Situacao = 'D'; //D - DISPONIVEL P/ ADOÇÃO           
-
+                Nome = "--"; 
+            
         }
 
     }
