@@ -12,6 +12,7 @@ namespace Proj_ONG
             MenuPrincipal();
             //chamar apenas a função do menu principal
         }
+        //MENU PRINCIPAL OK
         static void MenuPrincipal()
         {
             int opc = 0;
@@ -47,7 +48,7 @@ namespace Proj_ONG
                             break;
 
                         case 3:
-                            RealizarAdocao();
+                            MenuAdocao();
                             break;
 
                         default:
@@ -67,15 +68,14 @@ namespace Proj_ONG
                 Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("-----------------------MENU DO ADOTANTE ----------------------");
                 Console.WriteLine("1 - VOLTAR AO MENU PRINCIPAL");
-                Console.WriteLine("2 - CADASTRAR ADOTANTE");//insert
-                Console.WriteLine("3 - IMPRIMIR TODOS OS CADASTROS ATIVOS");//select
-                Console.WriteLine("4 - IMPRIMIR CADASTRO DE UM ADOTANTE ESPECÍFICO");//select c o cpf
-                Console.WriteLine("5 - EDITAR CADASTRO DO ADOTANTE"); //UPDATE
-                Console.WriteLine("6 - DELETAR CADASTRO"); //DELETE
+                Console.WriteLine("2 - CADASTRAR ADOTANTE");
+                Console.WriteLine("3 - IMPRIMIR TODOS OS CADASTROS ATIVOS");
+                Console.WriteLine("4 - IMPRIMIR CADASTRO DE UM ADOTANTE ESPECÍFICO");
+                Console.WriteLine("5 - EDITAR CADASTRO DO ADOTANTE");
                 Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("Digite a opção desejada: ");
                 opc = int.Parse(Console.ReadLine());
-                if (opc < 0 || opc > 6)
+                if (opc < 0 || opc > 5)
                     Console.WriteLine("OPÇÃO INVÁLIDA! Informe um número válido para acessar o menu:");
                 else
                 {
@@ -87,15 +87,9 @@ namespace Proj_ONG
                             break;
 
                         case 2:
-                            //Cadastrar adotante, dps verificar que n pode cadastrar c o mesmo cpf
                             Adotante a = new Adotante();
                             a.CadastrarAdotante();
                             InsertAdotante(a);
-
-                            //chamar o metodo de INSERT aqui
-                            //chamar cad adotante dnv - sem cpf
-                            //UpdateAdotante
-
                             break;
 
                         case 3:
@@ -106,16 +100,12 @@ namespace Proj_ONG
 
                         case 4:
                             //imprimir cadastro de UM adotante ESPECIFICO atraves do CPF
-                            SelectAdotante();
-                            //COM O SELECT WHERE CPF
+                            SelectAdotanteEspecifico();
                             break;
 
                         case 5:
-                            //Editar dados do adotante
+                            //Editar dados do cadastro do Adotante
                             UpdateAdotante();
-                            break;
-
-                        case 6:
                             break;
 
                         default:
@@ -123,7 +113,7 @@ namespace Proj_ONG
                             break;
                     }
                 }
-            } while (opc < 0 || opc > 6);
+            } while (opc < 0 || opc > 5);
         }
         static void MenuAnimal()
         {
@@ -133,15 +123,14 @@ namespace Proj_ONG
                 Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("-----------------------MENU DO ANIMAL ----------------------");
                 Console.WriteLine("1 - VOLTAR AO MENU PRINCIPAL");
-                Console.WriteLine("2 - CADASTRAR ANIMAL");//insert
-                Console.WriteLine("3 - IMPRIMIR CADASTRO DOS ANIMAIS DISPONIVEIS");//select
-                Console.WriteLine("4 - IMPRIMIR CADASTRO DE UM ANIMAL ESPECÍFICO");//select c o cpf
+                Console.WriteLine("2 - CADASTRAR ANIMAL");
+                Console.WriteLine("3 - IMPRIMIR CADASTRO DOS ANIMAIS DISPONIVEIS");
+                Console.WriteLine("4 - IMPRIMIR CADASTRO DE UM ANIMAL ESPECÍFICO");
                 Console.WriteLine("5 - EDITAR CADASTRO ANIMAL"); //UPDATE
-                Console.WriteLine("6 - DELETAR CADASTRO ANIMAL"); //DELETE
                 Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("Digite a opção desejada: ");
                 opc = int.Parse(Console.ReadLine());
-                if (opc < 0 || opc > 6)
+                if (opc < 0 || opc > 5)
                     Console.WriteLine("OPÇÃO INVÁLIDA! Informe um número válido para acessar o menu:");
                 else
                 {
@@ -165,16 +154,14 @@ namespace Proj_ONG
                             break;
 
                         case 4:
-                            //imprimir cadastro de UM adotante ESPECIFICO atraves do CPF
-                            SelectAnimal();
+                            //imprimir cadastro de um Animal ESPECIFICO atraves do CHIP
+                            SelectAnimalEspecifico();
                             //COM O SELECT WHERE CPF
                             break;
 
                         case 5:
+                            //Editar dados no cadastro do Animal
                             UpdateAnimal();
-                            break;
-
-                        case 6:
                             break;
 
                         default:
@@ -182,11 +169,63 @@ namespace Proj_ONG
                             break;
                     }
                 }
-            } while (opc < 0 || opc > 6);
+            } while (opc < 0 || opc > 5);
 
         }
         static void MenuAdocao()
         {
+            int opc = 0;
+            do
+            {
+                Console.WriteLine("-------------------------------------------------------------");
+                Console.WriteLine("-----------------------MENU DE ADOÇÃO----------------------");
+                Console.WriteLine("1 - VOLTAR AO MENU PRINCIPAL");
+                Console.WriteLine("2 - ANIMAIS DISPONÍVEIS PARA A ADOÇÃO");
+                Console.WriteLine("3 - CADASTRAR ADOÇÃO");//insert
+                Console.WriteLine("4 - IMPRIMIR CADASTRO DAS ADOÇÕES");//select
+                Console.WriteLine("5 - IMPRIMIR CADASTRO DE UMA ADOÇÃO ESPECÍFICA");//select c o cpf
+                Console.WriteLine("-------------------------------------------------------------");
+                Console.WriteLine("Digite a opção desejada: ");
+                opc = int.Parse(Console.ReadLine());
+                if (opc < 0 || opc > 5)
+                    Console.WriteLine("OPÇÃO INVÁLIDA! Informe um número válido para acessar o menu:");
+                else
+                {
+                    Console.Clear();
+                    switch (opc)
+                    {
+                        case 1:
+                            MenuPrincipal();
+                            break;
+
+                        case 2:
+                            SelectAnimalDisponivel();
+                            break;
+
+                        case 3:
+                            //Imprimir o cadastro de TODOS os adotantes ativos
+                            //COM O SELECT WHERE
+                            RealizarAdocao();
+                            break;
+
+                        case 4:
+                            //imprimir cadastro de UM adotante ESPECIFICO atraves do CPF
+                            //SelectAnimal();
+                            //COM O SELECT WHERE CPF
+
+                            break;
+
+                        case 5:
+                            SelectAdocaoEspecifico();
+                            break;
+
+                        default:
+                            Console.WriteLine("OPÇÃO INVÁLIDA! Informe uma das opções segundo o menu!");
+                            break;
+                    }
+
+                }
+            } while (opc < 0 || opc > 5);
 
         }
         static void InsertAdotante(Adotante adotante)
@@ -195,7 +234,7 @@ namespace Proj_ONG
             SqlConnection conexaosql = new SqlConnection(conn.Caminho());
             conexaosql.Open();
 
-            string sql = $"INSERT INTO dbo.Adotante (Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone, Status) VALUES ('{adotante.Nome}', '{adotante.CPF}', '{adotante.Sexo}', '{adotante.DataNascimento}', '{adotante.Logradouro}', '{adotante.Numero}', '{adotante.CEP}', '{adotante.Bairro}', '{adotante.Complemento}', '{adotante.Cidade}', '{adotante.UF}','{adotante.Telefone}', '{adotante.Status}');";
+            string sql = $"INSERT INTO dbo.Adotante (Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone, SituacaoAdotante) VALUES ('{adotante.Nome}', '{adotante.CPF}', '{adotante.Sexo}', '{adotante.DataNascimento}', '{adotante.Logradouro}', '{adotante.Numero}', '{adotante.CEP}', '{adotante.Bairro}', '{adotante.Complemento}', '{adotante.Cidade}', '{adotante.UF}','{adotante.Telefone}', '{adotante.SituacaoAdotante}');";
 
             SqlCommand cmd = new SqlCommand(sql, conexaosql);
             cmd.ExecuteNonQuery();
@@ -220,7 +259,7 @@ namespace Proj_ONG
             Console.WriteLine("3 - Editar DATA DE NASCIMENTO");
             Console.WriteLine("4 - Editar ENDEREÇO");
             Console.WriteLine("5 - Editar TELEFONE");
-            Console.WriteLine("6 - Editar STATUS do cadastro");
+            Console.WriteLine("6 - Editar Situação do cadastro");
             int op = int.Parse(Console.ReadLine());
             switch (op)
             {
@@ -386,18 +425,18 @@ namespace Proj_ONG
 
                 case 6:
                     int opc;
-                    char status;
+                    char situacao;
                     Console.WriteLine("Deseja inativar esse cadastro? [1 - SIM, 2 - NÃO]");
                     opc = int.Parse(Console.ReadLine());
                     if (opc == 1)
                     {
                         do
                         {
-                            status = 'I';
-                        } while (status != 'A' && status != 'I');
+                            situacao = 'I';
+                        } while (situacao != 'A' && situacao != 'I');
                     }
                     else
-                        status = 'A';
+                        situacao = 'A';
                     break;
 
                 default:
@@ -409,19 +448,35 @@ namespace Proj_ONG
         }
         static void SelectAdotanteAtivo()
         {
+            
             Banco conn = new Banco();
             SqlConnection conexaosql = new SqlConnection(conn.Caminho());
             conexaosql.Open();
 
-            string sql = $"SELECT Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone FROM dbo.Adotante WHERE Status= 'A';";
+            string sql = $"SELECT Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone FROM dbo.Adotante WHERE SituacaoAdotante= 'A';";
 
             SqlCommand cmd = new SqlCommand(sql, conexaosql);
-            cmd.ExecuteNonQuery();
+            //cmd.ExecuteNonQuery();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($"CHIP: {reader.GetInt32(0)}");
+                    Console.WriteLine($"Familia: {reader.GetString(1)}");
+                    Console.WriteLine($"Raça: {reader.GetString(2)}");
+                    Console.WriteLine($"Sexo: {reader.GetString(3)}");
+                    Console.WriteLine($"Nome: {reader.GetString(4)}");
+                    Console.WriteLine($"Situacao: {reader.GetString(5)}");
+                }
+            }
+            Console.ReadKey();
+            conexaosql.Close();
+
             Console.ReadKey();
             conexaosql.Close();
 
         }
-        static void SelectAdotante()
+        static void SelectAdotanteEspecifico()
         {
             Banco conn = new Banco();
             SqlConnection conexaosql = new SqlConnection(conn.Caminho());
@@ -431,26 +486,26 @@ namespace Proj_ONG
             string cpf = Console.ReadLine();
             Console.WriteLine("\n");
 
-            string sql = $"SELECT Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone, Status FROM dbo.Adotante WHERE CPF= '{cpf}';";
+            string sql = $"SELECT Nome, CPF, Sexo, DataNascimento, Logradouro, Numero, CEP, Bairro, Complemento, Cidade, UF, Telefone, SituacaoAdotante FROM dbo.Adotante WHERE CPF= '{cpf}';";
             SqlCommand cmd = new SqlCommand(sql, conexaosql);
             //cmd.ExecuteNonQuery();
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine($"\tNome: {reader.GetString(0)}");
-                    Console.WriteLine($"\tCPF: {reader.GetString(1)}");
-                    Console.WriteLine($"\tSexo: {reader.GetString(2)}");
-                    Console.WriteLine($"\tData de Nascimento: {reader.GetDateTime(3).ToShortDateString()}");
-                    Console.WriteLine($"\tLogradouro: {reader.GetString(4)}");
-                    Console.WriteLine($"\tNumero: {reader.GetInt32(5)}");
-                    Console.WriteLine($"\tCEP: {reader.GetInt32(5)}");
-                    Console.WriteLine($"\tBairro: {reader.GetString(7)}");
-                    Console.WriteLine($"\tComplemento: {reader.GetString(8)}");
-                    Console.WriteLine($"\tCidade: {reader.GetString(9)}");
-                    Console.WriteLine($"\tUF: {reader.GetString(10)}");
-                    Console.WriteLine($"\tTelefone: {reader.GetString(11)}");
-                    Console.WriteLine($"\tStatus: {reader.GetString(12)}");
+                    Console.WriteLine($"Nome: {reader.GetString(0)}");
+                    Console.WriteLine($"CPF: {reader.GetString(1)}");
+                    Console.WriteLine($"Sexo: {reader.GetString(2)}");
+                    Console.WriteLine($"Data de Nascimento: {reader.GetDateTime(3).ToShortDateString()}");
+                    Console.WriteLine($"Logradouro: {reader.GetString(4)}");
+                    Console.WriteLine($"Numero: {reader.GetInt32(5)}");
+                    Console.WriteLine($"CEP: {reader.GetInt32(6)}");
+                    Console.WriteLine($"Bairro: {reader.GetString(7)}");
+                    Console.WriteLine($"Complemento: {reader.GetString(8)}");
+                    Console.WriteLine($"Cidade: {reader.GetString(9)}");
+                    Console.WriteLine($"UF: {reader.GetString(10)}");
+                    Console.WriteLine($"Telefone: {reader.GetString(11)}");
+                    Console.WriteLine($"Situacao Adotante: {reader.GetString(12)}");
                 }
             }
             Console.ReadKey();
@@ -462,7 +517,7 @@ namespace Proj_ONG
             SqlConnection conexaosql = new SqlConnection(conn.Caminho());
             try
             {
-               
+
                 conexaosql.Open();
 
                 string sql = $"INSERT INTO dbo.Animal (CHIP, Familia, Raca, Sexo, Nome, Situacao) VALUES ('{animal.CHIP}', '{animal.Familia}', '{animal.Raca}', '{animal.Sexo}', '{animal.Nome}', '{animal.Situacao}');";
@@ -470,14 +525,13 @@ namespace Proj_ONG
                 SqlCommand cmd = new SqlCommand(sql, conexaosql);
                 cmd.ExecuteNonQuery();
                 Console.ReadKey();
-               
+
             }
             catch (SqlExeption msg)
             {
                 Console.WriteLine("Erro! " + msg);
             }
             conexaosql.Close();
-
         }
         static void UpdateAnimal()
         {
@@ -489,6 +543,7 @@ namespace Proj_ONG
             Console.WriteLine("Informe o numero do CHIP do animal que deseja editar o cadastro: ");
             string chip = Console.ReadLine();
             Console.WriteLine("\n");
+
             Console.WriteLine("Escolha entre as opções: ");
             Console.WriteLine("0 - VOLTAR AO MENU ANIMAL");
             Console.WriteLine("1 - Editar NOME");
@@ -567,11 +622,36 @@ namespace Proj_ONG
 
             }
         }
+        //SELECT que imprime todos os animais com a situação = D, de Disponível para adoção
         static void SelectAnimalDisponivel()
         {
-            //Fazer um select para imprimir os animais que possuem situaçaõ de Disponivel p adoção
+            Banco conn = new Banco();
+            SqlConnection conexaosql = new SqlConnection(conn.Caminho());
+            conexaosql.Open();
+
+            Console.WriteLine(">>>ANIMAIS DISPONÍVEIS PARA ADOÇÃO<<<");
+
+            string sql = $"SELECT CHIP, Familia, Raca, Sexo, Nome, Situacao FROM dbo.Animal WHERE Situacao= 'D';";
+            SqlCommand cmd = new SqlCommand(sql, conexaosql);
+            //cmd.ExecuteNonQuery();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($"CHIP: {reader.GetInt32(0)}");
+                    Console.WriteLine($"Familia: {reader.GetString(1)}");
+                    Console.WriteLine($"Raça: {reader.GetString(2)}");
+                    Console.WriteLine($"Sexo: {reader.GetString(3)}");
+                    Console.WriteLine($"Nome: {reader.GetString(4)}");
+                    Console.WriteLine($"Situacao: {reader.GetString(5)}");
+                }
+            }
+            Console.ReadKey();
+            conexaosql.Close();
+
         }
-        static void SelectAnimal()
+
+        static void SelectAnimalEspecifico()
         {
             Banco conn = new Banco();
             SqlConnection conexaosql = new SqlConnection(conn.Caminho());
@@ -588,18 +668,19 @@ namespace Proj_ONG
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine($"\tCHIP: {reader.GetInt32(0)}");
-                    Console.WriteLine($"\tNome: {reader.GetString(4)}");
-                    Console.WriteLine($"\tFamilia: {reader.GetString(1)}");
-                    Console.WriteLine($"\tRaça: {reader.GetString(2)}");
-                    Console.WriteLine($"\tSexo: {reader.GetString(3)}");
-                    Console.WriteLine($"\tSituacao: {reader.GetString(5)}");
+                    Console.WriteLine($"CHIP: {reader.GetInt32(0)}");
+                    Console.WriteLine($"Familia: {reader.GetString(1)}");
+                    Console.WriteLine($"Raça: {reader.GetString(2)}");
+                    Console.WriteLine($"Sexo: {reader.GetString(3)}");
+                    Console.WriteLine($"Nome: {reader.GetString(4)}");
+                    Console.WriteLine($"Situacao: {reader.GetString(5)}");
                 }
             }
             Console.ReadKey();
             conexaosql.Close();
 
         }
+        //Já adicionei o insert nessa função
         static void RealizarAdocao()
         {
             Console.WriteLine("----CADASTRO DE ADOÇÃO----");
@@ -621,104 +702,104 @@ namespace Proj_ONG
                 {
                     Banco conn = new Banco();
                     SqlConnection conexaosql = new SqlConnection(conn.Caminho());
-                    conexaosql.Open();
+                    try
+                    {
 
-                    string sql = $"INSERT INTO dbo.RegistroAdocao (CPF, CHIP, DataAdocao) VALUES ('{cpf}', '{chip}', '{DateTime.Now}');";
+                        conexaosql.Open();
+                        string sql = $"INSERT INTO dbo.RegistroAdocao (CPF, CHIP, DataAdocao) VALUES ('{cpf}', '{chip}', '{DateTime.Now}');";
+                        sql = $"UPDATE dbo.Animal set Situacao='A' WHERE CHIP='{chip}';";
 
-                    SqlCommand cmd = new SqlCommand(sql, conexaosql);
-                    cmd.ExecuteNonQuery();
-                    Console.ReadKey();
+                        SqlCommand cmd = new SqlCommand(sql, conexaosql);
+                        cmd.ExecuteNonQuery();
+                        Console.ReadKey();
+                    }
+                    catch (SqlExeption msg)
+                    {
+                        Console.WriteLine("Erro! " + msg);
+                    }
                     conexaosql.Close();
-
                 }
             }
+            else
+                MenuAdocao();
         }
         static void SelectAdocao()
         {
+            //Select Generico de Adoção
+            Console.WriteLine(">>>CONSULTAR REGISTRO DE ADOÇÕES<<<");
+            Banco conn = new Banco();
+            SqlConnection conexaosql = new SqlConnection(conn.Caminho());
+            conexaosql.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT adotante.Nome, registroAdocao.CPF, adotante.SituacaoAdotante, registroAdocao.CHIP, animal.Nome, " +
+                "animal.Familia, animal.Raca, animal.Sexo, animal.Situacao, registroAdocao.DataAdocao, " +
+                "FROM RegistroAdocao JOIN Adotante ON adotante.CPF = registroAdocao.CPF JOIN Animal On animal.CHIP = registroAdocao.CHIP " +
+                "WHERE registroAdocao.CPF = @CPF AND registroAdocao.CHIP = @CHIP";
+            cmd.Connection = conexaosql;
 
 
-
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($"Nome Tutor: {reader.GetString(0)}");
+                    Console.WriteLine($"CPF Tutor: {reader.GetString(1)}");
+                    Console.WriteLine($"Situacao Tutor: {reader.GetString(2)}");
+                    Console.WriteLine($"CHIP Animal: {reader.GetInt32(3)}");
+                    Console.WriteLine($"Nome Animal: {reader.GetString(4)}");
+                    Console.WriteLine($"Familia Animal: {reader.GetString(5)}");
+                    Console.WriteLine($"Raça Animal: {reader.GetString(6)}");
+                    Console.WriteLine($"Sexo Animal: {reader.GetString(7)}");
+                    Console.WriteLine($"Situação do Animal: {reader.GetString(8)}");
+                    Console.WriteLine($"Data de Adoção: {reader.GetDateTime(9).ToShortDateString()}");
+                }
+            }
+            Console.ReadKey();
+            conexaosql.Close();
         }
-
-
-
-
-        //static void InsertAdocao(Adotante adotante, Animal animal)
-        //{
-        //    Banco conn = new Banco();
-        //    SqlConnection conexaosql = new SqlConnection(conn.Caminho());
-        //    conexaosql.Open();
-
-        //    string sql = $"INSERT INTO dbo.RegistroAdocao (CPF, Nome, CHIP, Nome) VALUES ('{adotante.CPF}', '{adotante.Nome}', '{animal.CHIP}');";
-
-        //    SqlCommand cmd = new SqlCommand(sql, conexaosql);
-        //    cmd.ExecuteNonQuery();
-        //    Console.ReadKey();
-        //    conexaosql.Close();
-
-        //    Console.WriteLine(">>>LISTA DE ANIMAIS DISPONIVEIS<<<");
-        //    Banco conn = new Banco();
-        //    SqlConnection conexaosql = new SqlConnection(conn.Caminho());
-        //    conexaosql.Open();
-        //    string sql = $"SELECT CHIP, Familia, Raca, Sexo, Nome, Situacao FROM dbo.Animal WHERE Situacao='D';";
-        //    SqlCommand cmd = new SqlCommand(sql, conexaosql);
-        //    //cmd.ExecuteNonQuery();
-        //    using (SqlDataReader reader = cmd.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Console.WriteLine($"\tCHIP: {reader.GetInt32(0)}");
-        //            Console.WriteLine($"\tNome: {reader.GetString(1)}");
-        //            Console.WriteLine($"\tFamilia: {reader.GetString(2)}");
-        //            Console.WriteLine($"\tRaça: {reader.GetString(3)}");
-        //            Console.WriteLine($"\tSexo: {reader.GetString(4)}");
-        //            Console.WriteLine($"\tSituacao: {reader.GetString(5)}");
-        //        }
-        //    }
-        //    Console.ReadKey();
-        //    conexaosql.Close();
-
-        //    Console.WriteLine("\n");
-        //    conn = new Banco();
-        //    conexaosql = new SqlConnection(conn.Caminho());
-        //    conexaosql.Open();
-
-
-        //    //sql = $"SELECT CHIP, Familia, Raca, Sexo, Nome, Situacao FROM dbo.Animal WHERE CHIP= {chip} Situacao='D';";
-        //    //cmd = new SqlCommand(sql, conexaosql);
-        //    ////cmd.ExecuteNonQuery();
-        //    //using (SqlDataReader reader = cmd.ExecuteReader())
-        //    //{
-        //    //    while (reader.Read())
-        //    //    {
-        //    //        Console.WriteLine($"\tCHIP: {reader.GetInt32(0)}");
-        //    //        Console.WriteLine($"\tNome: {reader.GetString(1)}");
-        //    //        Console.WriteLine($"\tFamilia: {reader.GetString(2)}");
-        //    //        Console.WriteLine($"\tRaça: {reader.GetString(3)}");
-        //    //        Console.WriteLine($"\tSexo: {reader.GetString(4)}");
-        //    //        Console.WriteLine($"\tSituacao: {reader.GetString(5)}");
-        //    //    }
-        //    //}
-        //    //Console.ReadKey();
-        //    //conexaosql.Close();
-        //}
-        static void SelectAdocao(Adotante a, Animal animal)
+        static void SelectAdocaoEspecifico()
         {
-            //SELECT a.Nome AS 'Adotante', animal.Nome 'D', m.Nota_N1, m.Nota_N2, m.Nota_Sub, m.Nota_Media, m.Falta, m.Situacao
-            //FROM Aluno a, Matricula m, Disciplina d
+            //select especifico
+            Console.WriteLine(">>>CONSULTAR REGISTRO DE ADOÇÕES<<<");
+            Banco conn = new Banco();
+            SqlConnection conexaosql = new SqlConnection(conn.Caminho());
+            conexaosql.Open();
 
-            //WHERE a.RA = m.RA AND m.Sigla = d.Sigla AND m.Sigla = 'LPD'
+            Console.WriteLine("Informe o CPF do Tutor: ");
+            string cpf = Console.ReadLine();
+            Console.WriteLine("Informe o CHIP do animal que o Tutor adotou: ");
+            string chip = Console.ReadLine();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT adotante.Nome, registroAdocao.CPF, adotante.SituacaoAdotante, registroAdocao.CHIP, animal.Nome, " +
+                "animal.Familia, animal.Raca, animal.Sexo, animal.Situacao, registroAdocao.DataAdocao, " +
+                "FROM RegistroAdocao JOIN Adotante ON adotante.CPF = registroAdocao.CPF JOIN Animal On animal.CHIP = registroAdocao.CHIP " +
+                "WHERE registroAdocao.CPF = @CPF AND registroAdocao.CHIP = @CHIP";
+            cmd.Connection = conexaosql;
+            cmd.Parameters.Add(new SqlParameters("@CPF", cpf));
+            cmd.Parameters.Add(new SqlParameters("@CHIP", chip));
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine($"Nome Tutor: {reader.GetString(0)}");
+                    Console.WriteLine($"CPF Tutor: {reader.GetString(1)}");
+                    Console.WriteLine($"Situacao Tutor: {reader.GetString(2)}");
+                    Console.WriteLine($"CHIP Animal: {reader.GetInt32(3)}");
+                    Console.WriteLine($"Nome Animal: {reader.GetString(4)}");
+                    Console.WriteLine($"Familia Animal: {reader.GetString(5)}");
+                    Console.WriteLine($"Raça Animal: {reader.GetString(6)}");
+                    Console.WriteLine($"Sexo Animal: {reader.GetString(7)}");
+                    Console.WriteLine($"Situação do Animal: {reader.GetString(8)}");
+                    Console.WriteLine($"Data de Adoção: {reader.GetDateTime(9).ToShortDateString()}");
+                }
+            }
+            Console.ReadKey();
+            conexaosql.Close();
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 

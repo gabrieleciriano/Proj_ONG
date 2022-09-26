@@ -21,7 +21,7 @@ namespace Proj_ONG
         public string Cidade { get; set; }
         public string UF { get; set; }
         public string Telefone { get; set; }
-        public char Status { get; set; } //A- ATIVO I - INATIVO NO CADASTRO
+        public char SituacaoAdotante { get; set; } //A- ATIVO I - INATIVO NO CADASTRO
 
         //Metodo Construtor vazio
         public Adotante()
@@ -184,105 +184,8 @@ namespace Proj_ONG
                 }
             } while (Telefone.Length > 11);
 
-            Status = 'A';
+            SituacaoAdotante = 'A';
 
-        }
-
-       public void EditarCadastroAdotante()
-        {
-
-            //Adotante adotante = new Adotante();
-            Console.WriteLine("Informe o CPF do adotante que deseja editar o cadastro: ");
-            string cpf = Console.ReadLine();
-
-            //Console.WriteLine("Não há nenhum CPF cadastrado com esse numero!");
-            // cpf = adotante.FirstOrDefault(c => c.CPF == cpf);
-            Console.WriteLine("Escolha entre as opções: ");
-            Console.WriteLine("1 - Editar NOME");
-            Console.WriteLine("2 - Editar SEXO");
-            Console.WriteLine("3 - Editar DATA DE NASCIMENTO");
-            Console.WriteLine("4 - Editar ENDEREÇO");
-            Console.WriteLine("5 - Editar TELEFONE");
-            Console.WriteLine("6 - Editar STATUS do cadastro");
-            int op = int.Parse(Console.ReadLine());
-            switch (op)
-            {
-                case 0:
-                    break;
-                case 1:
-                    Console.WriteLine("Informe o nome correto: ");
-                    string nome = Console.ReadLine();
-                    string sql = $"UPDATE dbo.Adotante set Nome='{nome}' WHERE CPF='{cpf}';";
-                    //db.UpdateTable(sql);
-
-
-                    break;
-
-                case 2:
-                    do
-                    {
-                        Console.WriteLine("Informe seu genero correto: (M - Masculino, F - Feminino, N - Não desejo informar) : ");
-                        Sexo = char.Parse(Console.ReadLine().ToUpper());
-                        if (Sexo != 'M' && Sexo != 'F' && Sexo != 'N')
-                        {
-                            Console.WriteLine("OPÇÃO INVÁLIDA! INFORME (M, F OU N) ");
-                        }
-                    } while (Sexo != 'M' && Sexo != 'F' && Sexo != 'N');
-                    break;
-
-                case 3:
-                    DateTime datanasc;
-                    Console.Write("Informe a Data de Nascimento: ");
-                    while (!DateTime.TryParse(Console.ReadLine(), out datanasc))
-                    {
-                        if (datanasc > DateTime.Now)
-                        {
-                            Console.WriteLine("OPÇÃO INVÁLIDA! Informe uma data válida!");
-                        }
-                        else
-                            Console.Write("Informe a Data de Nascimento: ");
-                    }
-                    DataNascimento = datanasc.ToString("dd/MM/yyyy");
-                    
-                    break;
-
-                case 4:
-                    Console.WriteLine("Informe o Endereço correto: ");
-                    //criar e chamar o metodo de editar o endereco aq
-                    break;
-
-                case 5:
-                    do
-                    {
-                        Console.WriteLine("Informe o número de Telefone para contato com o DDD sem caracteres especiais: ");
-                        Telefone = Console.ReadLine();
-                        if (Telefone.Length > 11)
-                        {
-                            Console.WriteLine("\nIMPOSSÍVEL CADASTRAR! \nTENTE NOVAMENTE!");
-
-                        }
-                    } while (Telefone.Length > 11);
-                    break;
-                case 6:
-                    do
-                    {
-                        Console.WriteLine("Informe o STATUS do cadastro (A - Ativo, I - Inativo): ");
-                        Status = char.Parse(Console.ReadLine());
-                    } while (Status != 'A' && Status != 'I');
-                    break;
-
-                default:
-                    break;
-            }
-        }
-       
-        public override string ToString()
-        {
-            return $"NOME: {Nome} \nCPF: {CPF.Substring(0, 3)}.{CPF.Substring(3, 3)}.{CPF.Substring(6, 3)}-{CPF.Substring(9, 2)}" +
-                $"\nSEXO: {Sexo} \nDATA DE NASCIMENTO: {DataNascimento}" +
-                $"\nTELEFONE: ({Telefone.Substring(0, 2)}){Telefone.Substring(2, 5)}-{Telefone.Substring(7, 4)}" +
-                $"\nEndereço: Lograduro: {Logradouro}, Numero: {Numero}, CEP: {CEP}, Bairro: {Bairro}, Complemento: {Complemento}" +
-                $"\nCIDADE: {Cidade}, \nUF: {UF} ".ToString();
         }
     }
 
