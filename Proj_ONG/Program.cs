@@ -202,8 +202,7 @@ namespace Proj_ONG
             } while (opc < 0 || opc > 4);
         }
 
-        //FUNCIONANDO
-        //arrumado
+        
         static void InsertAdotante(Adotante adotante)
         {
             Banco conn = new Banco();
@@ -456,7 +455,7 @@ namespace Proj_ONG
             Console.ReadKey();
             conexaosql.Close();
         }
-        //ok
+      
         static void InsertAnimal(Animal animal)
         {
             Banco conn = new Banco();
